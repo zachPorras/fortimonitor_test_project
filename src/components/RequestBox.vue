@@ -23,7 +23,8 @@
       :value="80"
       color="orange"
       indeterminate
-    ></v-progress-circular>
+      id="spinner"
+    >refreshing</v-progress-circular>
 
     <v-card 
     v-if="table_display==true" 
@@ -155,7 +156,15 @@
         return this.data_modified[this.data_index-1]
       }
 
-    }
+    },
+
+    mounted: {
+
+    },
+
+    beforeDestroy: {
+
+    },
 
   }
 
@@ -165,6 +174,7 @@
 <style scoped>
 
 #papa-div {
+  display: relative;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -175,6 +185,13 @@
   margin-bottom: 2rem;
 }
 
+#spinner {
+  padding-top: 4rem;
+  position: absolute;
+  justify-self: center;
+  top: 27rem;
+}
+
 #response-data-card {
   width: 75rem;
 }
@@ -182,6 +199,7 @@
 #error-card {
   background-color: lightpink;
 }
+
 .request-btns {
   width: 12rem;
   margin-bottom: 1rem;
