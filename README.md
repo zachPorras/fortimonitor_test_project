@@ -37,4 +37,3 @@ App is currently best viewed in large & medium screen sizes. Not yet optimized f
 - Enhancements to CSS flexbox usage
 - Creating a more responsive custom table component instead of using a Vuetify table component
 
-Although dictated by straightforward functionality, the UI is very simple and could stand to have more aesthetically pleasing elements incorporated.

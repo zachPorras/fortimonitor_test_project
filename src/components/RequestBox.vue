@@ -2,22 +2,6 @@
   <div id="papa-div">
 
     <h1 id="header"></h1>
-    
-    <!-- OLD REQUEST/RESET BTNS -->
-    <!-- <v-btn 
-    class="request-btns" 
-    @click="makeRequest()"
-    >
-    See Outages
-    </v-btn>
-
-    <v-btn 
-    class="request-btns"
-    id="btn-reset" 
-    @click="resetVars()"
-    >
-    Reset
-    </v-btn> -->
 
     <v-progress-circular
       v-if="request_loading==true"
@@ -110,10 +94,6 @@
 
       // Sends request to panopta endpoint, retrieves outage data
       makeRequest() {
-        // if response data is already present, reset all vars
-        // if(this.data_modified!=null) {
-        //   this.resetVars()
-        // }
         this.request_loading = true
         let request_params = {
           method: 'GET'
@@ -121,15 +101,15 @@
         fetch(this.url, request_params)
           .then(response => response.json())
           .then(data => {
-            console.log('initial response object: ', data)
+            console.log('API response object: ', data)
             this.data_modified = []
             data.outage_list.forEach(outage => {
               let body = {
                 'server_id': outage['server_id'],
                 'server_name': outage['server_name'],
                 'description': outage['description'],
-                'start_time': outage['start_time'],
-                'end_time': outage['end_time'],
+                'start_time (UTC)': outage['start_time'],
+                'end_time (UTC)': outage['end_time'],
                 'status': outage['status'],
                 'severity': outage['severity'],
                 'has_active_maintenance': outage['has_active_maintenance']
@@ -140,7 +120,7 @@
               this.latest_request_time = `${current_date} ${current_time}`
               this.request_loading = false
             })
-            console.log('response object modified for table: ', this.data_modified)
+            // console.log('response object modified for table: ', this.data_modified)
             
           })
           .catch(err => {
@@ -150,13 +130,6 @@
             setTimeout(() => {this.error_message = null}, 10000);
           });
       },
-
-      // resets vars
-      // resetVars() {
-      //   this.response_data = null 
-      //   this.data_modified = [] 
-      //   this.error_message = null
-      // }
 
     },
 
@@ -181,7 +154,6 @@
         this.request_loading = false
         this.error_message = err.status
         console.log('Problem with initial API call: ', err)
-        // setTimeout(this.error_message = null, 3000)
       }
     },
 
@@ -247,10 +219,6 @@
 #tbody-tr {
   height:6rem;
 }
-
-/* #table-header {
-  margin-bottom: 1rem;
-} */
 
 #table-pagination {
   margin-top: 1rem;
