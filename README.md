@@ -8,6 +8,9 @@
 - NPM
 - Git (for repo interaction)
 
+### GitHub repo
+https://github.com/zachPorras/fortimonitor_test_project.git
+
 ### Run app locally
 ```
 npm run serve
