@@ -22,7 +22,15 @@ This application was created as a test project for FortiMonitor.
 ### Functionality
 Application's primary function is to display FortiMonitor outage data via a Panopta API. API endpoint offers 10 most recent outage reports which are paginated within a simple table in the UI. Table columns consist of a selection of response values for each outage.
 
+### Dev Notes
 Panopta API call occurs when UI view loads via Vue mounted() hook. API call is continuously made every 30 seconds once view rendered to display most up-to-date data from API. Most recent successful API call date & time are displayed in subtitle of table for user reference.
+
+Potential ways to allow for recurring requests made from the client side include:
+- Lifecycle Hooks: use setInterval() method within mounted() hook which calls API request method at specified intervals (currently using this strategy)
+- Loops: create a simple WHILE loop that wraps around API call method logic
+- External Libraries: task schedulers such as Bottleneck
+
+Request & Reset buttons were initially implemented but later removed when API requests were changed to occur automatically every 30 seconds. These buttons could be reintroduced to give the user a better sense of control (depending on the desired functionality of the app).
 
 Loading state is represented to user via a Vuetify spinner component which appears beneath the table while app awaits response from API call, signaling that data in the table will be udpated shortly.
 
