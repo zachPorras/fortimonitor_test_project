@@ -28,7 +28,7 @@ Panopta API call occurs when UI view loads via Vue mounted() hook. API call is c
 Potential ways to allow for recurring requests made from the client side include:
 - Lifecycle Hooks: use setInterval() method within mounted() hook which calls API request method at specified intervals (currently using this strategy)
 - Loops: create a simple WHILE loop that wraps around API call method logic
-- External Libraries: task schedulers such as Bottleneck
+- External Libraries: task schedulers such as Bottleneck, or perhaps an HTTP library that offers this type of recurring request feature
 
 Request & Reset buttons were initially implemented but later removed when API requests were changed to occur automatically every 30 seconds. These buttons could be reintroduced to give the user a better sense of control (depending on the desired functionality of the app).
 
