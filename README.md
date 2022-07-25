@@ -21,6 +21,8 @@ Application's primary function is to display FortiMonitor outage data via a Pano
 
 Panopta API call occurs when UI view loads via Vue mounted() hook. API call is continuously made every 30 seconds once view rendered to display most up-to-date data from API. Most recent successful API call date & time are displayed in subtitle of table for user reference.
 
+Loading state is represented to user via a Vuetify spinner component which appears beneath the table while app awaits response from API call, signaling that data in the table will be udpated shortly.
+
 Failed API calls result in a red error message which appears beneath table with error details (10 second timeout on error visibility). This also handles errors with API call made during initial rendering of app view. 
 ![image](https://user-images.githubusercontent.com/70177842/180698040-c2385236-5e44-4106-80a1-da00bd0bcc55.png)
 If data from a previous API call already exists in table at the time of a bad API call, data remains in table until a successful API call results in a data refresh.
