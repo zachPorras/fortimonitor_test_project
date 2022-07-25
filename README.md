@@ -1,6 +1,6 @@
 # fortizach (created with Vue2 using Vuetify components)
 
-## Requirements
+### Requirements
 - Node.js
 - NPM
 - Git (for repo interaction)
